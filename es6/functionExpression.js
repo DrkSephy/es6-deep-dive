@@ -1,3 +1,4 @@
+// Arrow functions don't shadow (this), which is lexical to current scope
 class Component {
   constructor() {
       let button = document.getElementById('myButton');
