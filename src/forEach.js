@@ -1,3 +1,8 @@
+// Array iteration using forEach in ES5
+arr.forEach(function (item) {
+  console.log(item);
+});
+
 // Iterate over an array using ES6
 let arr = ['a', 'b', 'c'];
 for (let item of arr) {
