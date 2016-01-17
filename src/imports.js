@@ -32,10 +32,17 @@ export { sumTwo, sumThree };
 
 // Alternate expoorts
 
-export function sumTwo(a, b) {
+function sumTwo(a, b) {
 	return a + b;
 }
 
-export function sumThree(a, b) {
+function sumThree(a, b) {
 	return a + b + c;
 }
+
+var api = {
+	sumTwo  : sumTwo,
+	sumThree: sumThree
+}
+
+export default api
