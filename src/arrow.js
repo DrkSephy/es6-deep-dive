@@ -59,3 +59,10 @@ Person.prototype.prefixName = function(arr) {
 		return this.name + character;
 	});
 };
+
+// ES6 Function Expressions versus arrow functions
+const arr = [1, 2, 3, 4, 5];
+const squares = arr.map(x => x * x);
+
+// Traditional function expression:
+const squares = arr.map(function (x) { return x * x });
