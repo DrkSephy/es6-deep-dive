@@ -7,10 +7,6 @@ class Person {
 		this.age    = age;
 		this.gender = gender;
 	}
-
-	printName() {
-		console.log(this.name);
-	}
 	
 	incrementAge() {
 	  this.age += 1;
@@ -23,10 +19,6 @@ class Personal extends Person {
 	  super(name, age, gender);
 		this.occupation = occupation;
 		this.hobby = hobby;
-	}
-
-	printOccupation() {
-		console.log(this.occupation);
 	}
 	
 	incrementAge() {
