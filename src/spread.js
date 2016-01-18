@@ -12,4 +12,10 @@ function concat(...params) {
 }
 
 var result = concat('The', 'cat', 'went', 'meow');
-console.log(result); // 'The cat went meow';
+console.log(result); // 'The cat went meow'
+
+const phrasesOne = ['The', 'cat'];
+const phrasesTwo = ['went', 'meow'];
+
+phrasesOne.push(...phrasesTwo);
+// phrasesOne = ['The', 'cat', 'went', 'meow']
