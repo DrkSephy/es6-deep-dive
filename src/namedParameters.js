@@ -11,3 +11,13 @@ function selectEntries(options) {
 function selectEntries({ start=0, end=-1, step=1 }) {
 	// Code here
 }
+
+function initializeCanvas(options) {
+	var height = options.height || 600;
+	var width  = options.width  || 400;
+	var lineStroke = options.lineStroke || 'black';
+}
+
+function initializeCanvas({ height=600, width=400, lineStroke='black'}) {
+	...
+}
