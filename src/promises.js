@@ -16,3 +16,17 @@ var save = response.catch(err => console.error(err)); // response.catch returns 
 // response is then settled who was waiting for data.then to settled
 // response was rejected, so we run a .catch instead of .then branch
 // save is fufilled and logs the error
+
+// In ES6, we no longer need libraries to create Promises. We can create them
+// from scratch. 
+
+// new Promise(resolve => resolve()) // promise was fufilled
+// new Promise((resolve, reject) => reject()) // promise was rejected
+
+new Promise(resolve => resolve(data))
+	.then(result => console.log(data));
+	// data
+
+new Promise((resolve, reject) => 
+	reject(new Error('Failed to fufill Promise')))
+	.catch(reason => console.log(reason));
