@@ -25,8 +25,29 @@ var save = response.catch(err => console.error(err)); // response.catch returns 
 
 new Promise(resolve => resolve(data))
 	.then(result => console.log(data));
-	// data
+
 
 new Promise((resolve, reject) => 
 	reject(new Error('Failed to fufill Promise')))
 	.catch(reason => console.log(reason));
+
+
+// Example of a promise
+var promise = new Promise(function(resolve, reject) {  
+   if (/* condition */) {
+      resolve(/* value */);  // fulfilled successfully
+   }
+   else {
+      reject(/* reason */);  // error, rejected
+   }
+});
+
+// The first handler (resolve) is called when the Promise has been fufilled,
+// and the value has been passed to the handler.
+
+// The second handler (reject) is called when the Promise has been rejected 
+// with the value being passed to that handler. 
+
+// A Promise can only be settled (fufilled/rejected) once, and this value is immutable.
+
+// Talk about concurrent promises using Promises.all
