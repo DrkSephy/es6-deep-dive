@@ -4,6 +4,27 @@
  * They make it easier to reason about code, and are a nice substitute for callbacks. 
 */
 
+// Promise allow us to turn our horizontal code:
+func1(function (value1) {
+  func2(value1, function(value2) {
+    func3(value2, function(value3) {
+      func4(value3, function(value4) {
+      	func5(value4, function(value5) {
+      		// Do something with value 5
+      	});
+      });
+    });
+  });
+});
+
+// Into...
+func1(value1)
+	.then(func2(value1) { })
+	.then(func3(value2) { })
+	.then(func4(value3) { })
+	.then(func5(value4) { 
+	// Do something with value 5 
+	})
 
 var data = requests.get('http://swapi.co/api/people/1'); // .get returns a brand new data promises
 var response = data.then(res => res.body); // data.then returns another new promise
