@@ -51,3 +51,39 @@ var promise = new Promise(function(resolve, reject) {
 // A Promise can only be settled (fufilled/rejected) once, and this value is immutable.
 
 // Talk about concurrent promises using Promises.all
+
+// Promises in summary:
+// 	* Promises allow us to write asynchronous code in a synchronous matter
+//  * Promises allow us to unify asynchronous APIS
+//  * Promises guarantees no race conditions and immutability of the future value 
+//    represented by the promise
+
+// Promise example using getJson, to highlight multiple promises
+var fetchJSON = function(url) {  
+  return new Promise((resolve, reject) => {
+    $.getJSON(url)
+      .done((json) => resolve(json))
+      .fail((xhr, status, err) => reject(status + err.message));
+  });
+}
+
+var urls = {  
+  'http://www.api.com/items/1234',
+  'http://www.api.com/items/4567'
+};
+
+var urlPromises = urls.map(fetchJSON);
+
+Promise.all(urlPromises)  
+  .then(function(results) {
+     // If all the promises are fufilled, 
+     // we now execute this 
+     results.forEach(function(data) {
+       // process our data
+     });
+  })
+  .catch(function(err) {
+    // Will catch failure of first failed promise
+    console.log("Failed:", err);
+  });
+
