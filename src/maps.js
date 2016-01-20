@@ -53,3 +53,12 @@ for (let key of map.keys()) {
 	// > string, boolean, number, object, function
 };
 
+// .entries()
+for (let entry of map.entries()) {
+	console.log(entry[0], entry[1]);
+}
+
+// More convenient syntax using destructuring:
+for (let [key, value] of map.entries()) {
+  console.log(key, value);
+}
