@@ -1,5 +1,16 @@
 // ES6 example of a class
 
+// ES5 Base Class
+function Person(name, age, gender) {
+    this.name   = name;
+    this.age    = age;
+    this.gender = gender;
+}
+
+Person.prototype.incrementAge = function () {
+    return this.age += 1;
+};
+
 // Base class
 class Person {
 	constructor(name, age, gender) {
@@ -11,6 +22,30 @@ class Person {
 	incrementAge() {
 	  this.age += 1;
 	}
+}
+
+// Extended Classes in ES5
+function Employee(name, title) {
+    Person.call(this, name); // super(name)
+    this.title = title;
+}
+Employee.prototype = Object.create(Person.prototype);
+Employee.prototype.constructor = Employee;
+Employee.prototype.describe = function () {
+    return Person.prototype.describe.call(this) // super.describe()
+           + ' (' + this.title + ')';
+};
+
+function Personal(name, age, gender, occupation, hobby) {
+	Person.call(this, name, age, gender);
+	this.occupation = occupation;
+	this.hobby = hobby;
+}
+
+Personal.prototype = Object.create(Person.prototype);
+Personal.prototype.constructor = Personal;
+Personal.prototype.incrementAge = function () {
+	return Person.prototype.incrementAge.call(this) += 1;
 }
 
 // Extended Class
