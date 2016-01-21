@@ -69,3 +69,42 @@ function* getData() {
 	var entry2 = yield request('http://some_api/item2');
 	var data2  = JSON.parse(entry2);
 }
+
+// Upgrading our generator using promises
+function request(url) {
+    // Note: returning a promise now!
+    return new Promise( function(resolve,reject){
+        makeAjaxCall( url, resolve );
+    } );
+}
+
+// This will yield a promise
+function request(url) {
+	return new Promise((resolve, reject) => {
+		getJSON(url, resolve);
+	});
+}
+
+// Construct a function to control the generator
+function iterateGenerator(gen) {
+	var generator = gen();
+	var ret;
+	(function iterate(val) {
+		ret = generator.next();
+		if(!ret.done) {
+			ret.value.then(iterate);
+		} else {
+			setTimeout(function() {
+				iterate(ret.value);
+			});
+		}
+	})(); 
+}
+
+iterateGenerator(function* getData() {
+  var entry1 = yield request('http://some_api/item1');
+	var data1  = JSON.parse(entry1);
+	var entry2 = yield request('http://some_api/item2');
+	var data2  = JSON.parse(entry2);
+});
+
